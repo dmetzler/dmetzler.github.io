@@ -14,7 +14,9 @@ Shit Happens All The Time
 Recent news reminded a lot of people that a disaster can occur in any datacenter: 3.6 million websites went down after
 a fire blew up a datacenter of the french hosting company OVH. Octave Klaba, the CEO of OVH, quickly asked his customers to execute their disaster recovery plans.
 
-{% twitter https://twitter.com/sdis67/status/1369597903535304705 %}
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🔥 Incendie sur le site d&#39;OVH Cloud à <a href="https://twitter.com/hashtag/Strasbourg?src=hash&amp;ref_src=twsrc%5Etfw">#Strasbourg</a> : une centaine de <a href="https://twitter.com/hashtag/Pompiers67?src=hash&amp;ref_src=twsrc%5Etfw">#Pompiers67</a> 🚒 a été mobilisée cette nuit dont le bateau-pompe franco-allemand Europa1. Les actions menées ont permis de préserver la majeure partie des bâtiments de l&#39;entreprise. COD activé. Pas de blessé. <a href="https://t.co/RKjI6F9DB7">pic.twitter.com/RKjI6F9DB7</a></p>&mdash; SDIS du Bas-Rhin (@sdis67) <a href="https://twitter.com/sdis67/status/1369597903535304705?ref_src=twsrc%5Etfw">March 10, 2021</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
 
 It's not my job to design, build and manage data centers, so I won't lecture OVH here (and not only because Octave and I attended the same university). The rule is the same for everyone: sometimes, something will break and you have to prepare for it.
 
