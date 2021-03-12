@@ -80,7 +80,7 @@ Rehearsal
 
 It's great to plan for DR, but if planning is a nice idea, you need to verify that your plan is working well. That means that you need to rehearse your plan regularly, not just once. In a few months, a lot of things can change: the tooling evolves, the libraries that you rely on can change, some of them may not work anymore, etc... You don't want to fix some library compatibility issue the day you need to run it for real.
 
-At Nuxeo, we run DR drills twice a year to be sure that our automation can still run them.
+At Nuxeo, we run DR drills twice a year to be sure that our automation can still run them. One of the scenario we also would like to test is if the disaster happens on a site where our automation executer is running. Basically, you want to be able to re-install this platform on another site and run the DR scenario from there (and yes the installation of our automation platform is also completely automated).
 
 
 Conclusion
