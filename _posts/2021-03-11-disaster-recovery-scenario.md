@@ -41,6 +41,8 @@ Then, of course, the thing that comes to mind when running an application is to 
 
 Some data can also be rebuilt. For instance, the Nuxeo repository can be reindexed to rebuild the index data that don't need to be backup. This comes with a drawback though: indexing takes time.
 
+This may seem obvious, but the backups have to be sent to another region, otherwise, if the site is lost, then your backups are lost too! In AWS, S3 offers cross-region replication of the objects. Simply enabling this option on the bucket where you save your backups will get you in a safe spot. At OVH, that's what is called backup storage, and 500GB of storage is offered for free for every dedicated server.
+
 At Nuxeo, the MongoDB repositories run a continuous backup strategy with snapshots taken every 6 hours. That means that the MongoDB oplog is replicated continuously, allowing for point-in-time recovery, and a snapshot of the DB is taken every 6 hours. Those snapshots are then sent to an S3 bucket with cross-region replication configured. We run a full reindex after the restore. The time it takes is then depending on the size of the repository. As we store our binaries in S3, we use S3 cross-region replication to replicate the blob of the documents in real-time in another bucket, in another region. In Nuxeo Cloud, your data are safe.
 
 RTO And RPO
