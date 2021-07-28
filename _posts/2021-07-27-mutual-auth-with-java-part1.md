@@ -232,7 +232,7 @@ For the server part, you would usually generate a key and the CSR, then send the
 
 For the client part, as you manage the server, you may decide on a scenario where the clients would send you some CSR, and you would sign them with a CA that you trust. You don't need a third party there.
 
-In the second part of this series, we will see how to use the client certificate in a Java application.
+[In the second part]({% post_url 2021-07-28-mutual-auth-with-java-part2 %}) of this series, we will see how to use the client certificate in a Java application.
 
 ## References
 - `Github Repository:` https://github.com/dmetzler/mutual-auth-with-java
