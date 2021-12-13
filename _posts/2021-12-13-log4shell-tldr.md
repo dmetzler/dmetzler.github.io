@@ -47,7 +47,7 @@ THERE IS NO OTHER SOLUTION! RECENT VERSIONS OF THE JVM DO NOT PROTECT YOU!
 
 <div class="admonition warning">
 <p class="admonition-title">Note</p>
-<p>If your in a version prior to 2.0, then you are not exposed to this CVE. However you are exposed to other remote code execution vulnerabilities and you should plan for an upgrade.</p>
+<p>If your in a version prior to 2.0, then you are not exposed to this CVE. However you are exposed to [other remote code execution](https://www.cvedetails.com/cve/CVE-2019-17571/) vulnerabilities and you should plan for an upgrade.</p>
 </div>
 
 ## Step 3 : What Next ?
