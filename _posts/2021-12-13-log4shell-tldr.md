@@ -13,7 +13,14 @@ img_url: /images/2021-12-13-log4shell.png
 ---
 ## Context
 
-The context is quite simple, on December 9, 2021 a [CVE rated 10 on 10](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228) was released about the Log4j2 library which is a widely used logging library in the Java ecosystem. And as the Java ecosystem is huge, well it's a huge vulnerability that allows to take control of your server with just one request. Plenty of resources are available (look at the end of this post), and here I just want to give a quick remediation guide based on your situation.
+The context is quite simple, on December 9th 2021 a [CVE rated 10 on 10](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228) was released about the Log4j2 library which is a widely used logging library in the Java ecosystem. And as the Java ecosystem is huge, well it's a huge vulnerability that allows to take control of your server with just one request. Plenty of resources are available (look at the end of this post), and here I just want to give a quick remediation guide based on your situation.
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On December 14th 2021 a new [CVE-2021-45046](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) introduced by the changes on log4j 2.15 was discovered. I updated this post accordingly.</p>
+</div>
+
 
 ## Step 1 : Do I Use Log4j ? And What Version ?
 
@@ -38,8 +45,8 @@ A diagram is always better than a long explanation:
 
 If you're in the danger zone, then you need to escape as quickly as possible by choosing one of the possible solutions, in order:
 
-1. Migrate to `log4j` >= 2.15
-2. Launch your application with the Java option: `-Dlog4j2.formatMsgNoLookups=true`
+1. Migrate to `log4j` >= 2.16
+2. if 2.10 <= version < 2.15 Launch your application with the Java option: `-Dlog4j2.formatMsgNoLookups=true`. If you are on log4j 2.15, then this fix doesn't prevent the possible DOS (CVE-2021-45046).
 3. Remove the `JndiLookup` class in the `log4j` jar with an empty implementation : `zip -q -d log4j-core-*.jar org/apache/logging/log4j/core/lookup/JndiLookup.class`
 
 
@@ -76,6 +83,7 @@ done
 
 ## References
 - [CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228)
+- [CVE-2021-45046](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046)
 - Longer explanation : https://www.lunasec.io/docs/blog/log4j-zero-day/
 - JNDI injections in Java : https://www.veracode.com/blog/research/exploiting-jndi-injections-java
 - Java Unmarshaller security: https://github.com/mbechler/marshalsec
