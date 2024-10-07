@@ -13,15 +13,15 @@ img_credits: Photo by <a href="https://unsplash.com/@chalkpitcassetteclub?utm_co
 ---
 ## Context
 
-As an AWS partner, I often support some AWS workshop, helping customers master the craft of using the correct AWS services. Those workshops are prepared by AWS and very often use Amazon Cloud9, a service that provides an IDE in the cloud. It is really convenient as you don't have to provide any credentials: as long as you're logged in the AWS console you inherits the permission of the current profile.
+As an AWS partner, I often support some AWS workshop, helping customers master the craft of using the correct AWS services. Those workshops are prepared by AWS and very often use Amazon Cloud9, a service that provides an IDE in the cloud. It is really convenient as you don't have to provide any credentials. As long as you're logged in to the AWS console, you inherit the permission of the logged in profile.
 
-On July 25th 2024, [AWS announced](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/) the retirement of the Amazon Cloud9 service. Of course the thousands of workshops using Cloud9 have not been updated to adapt to that change. When running the workshop at an AWS event, they can start new Cloud9 instances, but on your own account, it's not possible to start a new instance anymore. In this post, I will present how quickly create a development environment that provides the same features than Cloud9.  
+On July 25th 2024, [AWS announced](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/) the retirement of the Amazon Cloud9 service. Of course the thousands of workshops using Cloud9 have not been updated to adapt to that change. When running the workshop at an AWS event, they can start new Cloud9 instances, but on your own account, it's not possible to start a new instance anymore. In this post, I will present how quickly create a development environment that provides the same features as Cloud9.  
 
 *Disclaimer:* the installation is for POSIX like systems, whereas it should be feasible to user the same technique with Windows, I can't test it thoroughly.
 
 ## Prerequisites
 
-There are only a few prerequisites. Let's start by CDK that can be installed with the following command:
+There are only a few prerequisites. Let's start by setting up CDK that can be installed with the following command:
 
 ```shell
 $ npm install -g aws-cdk
@@ -53,11 +53,11 @@ at the end of the deployment you should have the following message that gives yo
 
 ![Architecture](/images/2024-10-04-cdkdeploy.png)
 
-The following step have been run by the CDK automation:
+The following steps have been run by the CDK automation:
 
 - Deployment of an SSH keypair using your own `~/.ssh/id_rsa.pub`
 - Creation of a security group allowing only your public IP to connect through SSH
-- Deployment of an EC2 instance in a public subnet, attached to that security group
+- Deployment of an EC2 instance in a public subnet that is attached to that security group
 
 
 ## Remote Connection with VisualStudio Code
@@ -66,7 +66,7 @@ Now it's time to start VisualStudio and connect to a remote host using the butto
 
 ![Remote Connect](/images/2024-10-04-start-remote.png)
 
-The select the `Connect to host` entry in the drop down list and enter the following:
+Then select the `Connect to host` entry in the drop down list and enter the following:
 
 ```
 ec2-user@ec2-XXXXXXXXXXXXX.compute.amazonaws.com
@@ -113,7 +113,7 @@ VSCode automatically detects that some ports can be forwarded and offers to Prev
 
 ## Cleaning up
 
-When you're finished, you probably want to cleanup your instance, at least to avoid incurring charges ! Thanks to CDK it is as easy as launching the following command in the local `aws-workshop-ide` folder:
+When you're finished, you probably want to cleanup your instance, at least to avoid incurring charges! Thanks to CDK it is as easy as launching the following command in the local `aws-workshop-ide` folder:
 
 ```shell
 $ cdk destroy
@@ -122,7 +122,7 @@ $ cdk destroy
 ## Conclusion
 
 Cloud9 is dead, probably for the better: it was becoming old and I encoutered a few problems in the past to just provision the correct instance type.
-By using a remote VSCode setup, we can accomplish exactly the same kind of configuration, allowing to code remotely and inherit from the remote instance role permissions.
+By using a remote VSCode setup, we can accomplish exactly the same kind of configuration - allowing users to code remotely and inherit from the remote instance role permissions.
 The CDK automation can of course be customized to fit your preferences like:
 
 - Choosing a custom VPC to launch the EC2 instance
